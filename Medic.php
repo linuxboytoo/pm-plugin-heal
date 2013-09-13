@@ -2,7 +2,7 @@
 /*
 __PocketMine Plugin__
 name=Medic
-version=0.0.1
+version=0.0.2
 description=Plugin to allow Ops to heal other players
 author=linuxboytoo
 class=Medic
