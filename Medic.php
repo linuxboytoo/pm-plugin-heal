@@ -36,7 +36,7 @@ class Medic implements Plugin{
 			$player = $this->api->player->get($params[0]);
 			$player->entity->heal($params[1], $username, true);
 
-			$this->api->chat->sendTo(false, "[Medic] '.$username.' healed you of '.$params[1].' health!');
+			$this->api->chat->sendTo(false, '[Medic] '.$username.' healed you of '.$params[1].' health!');
 			
 			return 'You healed '.$player->username;
 		}
