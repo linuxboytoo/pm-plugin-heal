@@ -2,7 +2,7 @@
 /*
 __PocketMine Plugin__
 name=Medic
-version=0.0.2
+version=0.0.4
 description=Plugin to allow Ops to heal other players
 author=linuxboytoo
 class=Medic
@@ -28,15 +28,19 @@ class Medic implements Plugin{
         }
 
 	public function heal($cmd, $params, $issuer, $alias) {
+                
+		if(!($issuer instanceof Player)){ return "Please run this command in-game.\n"; }                                       break;		
 		
 		$username = $issuer->username;
 		if($this->api->ban->isOp($username)) {
-			if(empty($params[1])) { $params[1]==1000; }		
+			if(intval($params[1])<1) { $params[1]=20; }		
 
 			$player = $this->api->player->get($params[0]);
+	                if(!($player instanceof Player)){ return "Invalid Player."; }
+
 			$player->entity->heal($params[1], $username, true);
 
-			$this->api->chat->sendTo(false, '[Medic] '.$username.' healed you of '.$params[1].' health!');
+			$this->api->chat->sendTo(false, '[Medic] '.$username.' healed you of '.$params[1].' health!', $params[1]);
 			
 			return 'You healed '.$player->username;
 		}
