@@ -29,7 +29,7 @@ class Medic implements Plugin{
 
 	public function heal($cmd, $params, $issuer, $alias) {
                 
-		if(!($issuer instanceof Player)){ return "Please run this command in-game.\n"; }                                       break;		
+		if(!($issuer instanceof Player)){ return "Please run this command in-game.\n"; }                	
 		
 		$username = $issuer->username;
 		if($this->api->ban->isOp($username)) {
